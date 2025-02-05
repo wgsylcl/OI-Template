@@ -45,9 +45,9 @@ def get_md_files(directory):
 
 def generate_content(directory):
     md_files = get_md_files(directory)
-    result = ""
+    result = "[简介](./index.md)\n"
     for file in md_files:
-        if file != "SUMMARY.md":
+        if file != "SUMMARY.md" and file != "index.md":
             result += f"[{file}](./{file})\n"
     return str(result)
 
