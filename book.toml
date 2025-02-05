@@ -10,6 +10,9 @@ copyable = true          # include the copy button for copying code snippets
 enable = true    # include support for printable output
 page-break = false # insert page-break after each chapter
 [output.html]
+git-repository-url = "https://gitee.com/wgsylcl/oi-template"
+git-repository-icon = "fa-github"
+edit-url-template = "https://gitee.com/wgsylcl/oi-template/edit/main/{path}"
 theme = "theme"
 default-theme = "Navy"
 additional-css = ["./mdbook-admonish.css"]
