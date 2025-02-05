@@ -1,28 +1,30 @@
 [book]
-authors = ["wgsylcl"]
+authors = ["liuchuliang666"]
 language = "zh"
 multilingual = false
 src = "src"
 title = "OI-Template"
 [output.html.playground]
-editable = true
+copyable = true          # include the copy button for copying code snippets
+[output.html.print]
+enable = true    # include support for printable output
+page-break = false # insert page-break after each chapter
 [output.html]
+theme = "theme"
 default-theme = "Navy"
-mathjax-support = true
+additional-css = ["./mdbook-admonish.css"]
+additional-js = ["./js/highlightjs-line-numbers.js"]
 [output.html.search]
-enable = true            # 启用搜索功能
-limit-results = 30       # 搜索结果的最大数量
-teaser-word-count = 30   # 用于搜索结果摘要的单词数量
-use-boolean-and = true   # 多个搜索词必须全部匹配
-boost-title = 2          # 匹配标题的排名提升因子
-boost-hierarchy = 1      # 匹配页面名称的排名提升因子
-boost-paragraph = 1      # 匹配文本的排名提升因子
-expand = true            # 部分单词将匹配更长的词
-heading-split-level = 3  # 将结果链接到标题级别
-copy-js = true           # 包含搜索的JavaScript代码
-[preprocessor.mathjax]
-command = "./mdbook-mathjax-preprocessor/target/release/mdbook-mathjax-preprocessor"
-renderer = ["html"]
-[preprocessor.toc]
-command = "mdbook-toc"
-renderer = ["html"]
+enable = true            
+limit-results = 30       
+teaser-word-count = 30   
+use-boolean-and = true   
+boost-title = 2          
+boost-hierarchy = 1      
+boost-paragraph = 1      
+expand = true            
+heading-split-level = 3  
+copy-js = true           
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
