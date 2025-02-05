@@ -4,8 +4,8 @@
     /* Browser default font-size is 16px, this way 1 rem = 10px */
     font-size: 62.5%;
     color-scheme: var(--color-scheme);
+    --content-max-width: 80%;
 }
-
 html {
     font-family: 'Microsoft YaHei', sans-serif, "Open Sans", sans-serif;
     color: var(--fg);
