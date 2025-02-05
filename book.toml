@@ -7,6 +7,7 @@ title = "OI-Template"
 [output.html.playground]
 editable = true
 [output.html]
+default-theme = "Navy"
 mathjax-support = true
 [output.html.search]
 enable = true            # 启用搜索功能
@@ -21,4 +22,7 @@ heading-split-level = 3  # 将结果链接到标题级别
 copy-js = true           # 包含搜索的JavaScript代码
 [preprocessor.mathjax]
 command = "./mdbook-mathjax-preprocessor/target/release/mdbook-mathjax-preprocessor"
+renderer = ["html"]
+[preprocessor.toc]
+command = "mdbook-toc"
 renderer = ["html"]
