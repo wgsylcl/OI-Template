@@ -1,0 +1,24 @@
+[book]
+authors = ["wgsylcl"]
+language = "zh"
+multilingual = false
+src = "src"
+title = "OI-Template"
+[output.html.playground]
+editable = true
+[output.html]
+mathjax-support = true
+[output.html.search]
+enable = true            # 启用搜索功能
+limit-results = 30       # 搜索结果的最大数量
+teaser-word-count = 30   # 用于搜索结果摘要的单词数量
+use-boolean-and = true   # 多个搜索词必须全部匹配
+boost-title = 2          # 匹配标题的排名提升因子
+boost-hierarchy = 1      # 匹配页面名称的排名提升因子
+boost-paragraph = 1      # 匹配文本的排名提升因子
+expand = true            # 部分单词将匹配更长的词
+heading-split-level = 3  # 将结果链接到标题级别
+copy-js = true           # 包含搜索的JavaScript代码
+[preprocessor.mathjax]
+command = "./mdbook-mathjax-preprocessor"
+renderer = ["html"]
