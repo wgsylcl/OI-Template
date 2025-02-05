@@ -1,5 +1,5 @@
 import os, glob
-
+from pathlib import Path
 def process_markdown_files():
     """
     遍历脚本目录下的 src 文件夹中的所有 Markdown 文件，
@@ -48,7 +48,7 @@ def generate_content(directory):
     result = "[简介](./index.md)\n"
     for file in md_files:
         if file != "SUMMARY.md" and file != "index.md":
-            result += f"[{file}](./{file})\n"
+            result += f"[{Path(file).stem}](./{file})\n"
     return str(result)
 
 def main():
