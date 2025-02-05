@@ -20,5 +20,5 @@ expand = true            # 部分单词将匹配更长的词
 heading-split-level = 3  # 将结果链接到标题级别
 copy-js = true           # 包含搜索的JavaScript代码
 [preprocessor.mathjax]
-command = "./mdbook-mathjax-preprocessor"
+command = "./mdbook-mathjax-preprocessor/target/release/mdbook-mathjax-preprocessor"
 renderer = ["html"]
