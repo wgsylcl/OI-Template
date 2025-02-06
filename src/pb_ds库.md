@@ -153,7 +153,7 @@ typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_
 Tree tr;
 
 tr.insert(5);
-tr.insert(3);
+tr.insert(6);
 tr.insert(7);
 
 cout << *tr.find_by_order(1) << endl; // 输出 5
@@ -166,7 +166,7 @@ Tree a, b;
 
 a.insert(1);
 a.insert(5);
-b.insert(3);
+b.insert(6);
 b.insert(7);
 
 a.join(b); // 合并 a 和 b，b 被清空
@@ -181,7 +181,7 @@ for (int x : a) {
 }
 cout << endl;
 for (int x : b) {
-    cout << x << " "; // 输出 3 7
+    cout << x << " "; // 输出 6 7
 }
 cout << endl;
 ```
