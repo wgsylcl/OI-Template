@@ -137,7 +137,7 @@ tr.insert(x); // 插入元素 x
 tr.erase(x);  // 删除元素 x
 ```
 ##### 4.2.2 查找
-- `find_by_order(k)`：返回排名第 $k$ 的元素（0 - based）。
+- `find_by_order(k)`：返回排名第 $k$ 的元素（$0$ - based）。
 - `order_of_key(x)`：返回 $x$ 的排名（比 $x$ 小的元素个数）。
 - `lower_bound(x)`：返回大于等于 $x$ 的最小元素迭代器。
 - `upper_bound(x)`：返回大于 $x$ 的最小元素迭代器。
@@ -196,7 +196,7 @@ cout << endl;
 
 解决方法：
 - 使用 `pair<int, int>` 存储元素，`second` 表示插入时间，避免重复。
-- `order_of_key` 和 `find_by_order` 函数用于处理排名和第 k 小。
+- `order_of_key` 和 `find_by_order` 函数用于处理排名和第 $k$ 小。
 
 代码示例：
 ```cpp
