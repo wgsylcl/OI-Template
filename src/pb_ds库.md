@@ -171,7 +171,7 @@ b.insert(7);
 
 a.join(b); // 合并 a 和 b，b 被清空
 for (int x : a) {
-    cout << x << " "; // 输出 1 5 3 7
+    cout << x << " "; // 输出 1 5 6 7
 }
 cout << endl;
 
