@@ -18,16 +18,20 @@ default-theme = "Navy"
 additional-css = ["./mdbook-admonish.css"]
 additional-js = ["./js/highlightjs-line-numbers.js"]
 [output.html.search]
-enable = true            
-limit-results = 30       
-teaser-word-count = 30   
-use-boolean-and = true   
-boost-title = 2          
-boost-hierarchy = 1      
-boost-paragraph = 1      
-expand = true            
-heading-split-level = 3  
-copy-js = true           
+enable = true
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
+copy-js = true
 [preprocessor.admonish]
 command = "mdbook-admonish"
 assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+[preprocessor.katex]
+after = ["links"]
+pre-render = false
+no-css = true
