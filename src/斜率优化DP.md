@@ -1,5 +1,5 @@
 # 斜率优化DP
-```admonish example
+```admonish question
 [P5785 [SDOI2012] 任务安排](https://www.luogu.com.cn/problem/P5785)
 #### 题目描述
 
