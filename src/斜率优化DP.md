@@ -1,7 +1,5 @@
 # 斜率优化DP
-```admonish question
-[P5785 [SDOI2012] 任务安排](https://www.luogu.com.cn/problem/P5785)
-#### 题目描述
+```admonish question title="[P5785 [SDOI2012] 任务安排](https://www.luogu.com.cn/problem/P5785)"
 
 机器上有 $n$ 个需要处理的任务，它们构成了一个序列。这些任务被标号为 $1$ 到 $n$，因此序列的排列为 $1 , 2 , 3 \cdots n$。这 $n$ 个任务被分成若干批，每批包含相邻的若干任务。从时刻 $0$ 开始，这些任务被分批加工，第 $i$ 个任务单独完成所需的时间是 $T_i$。在每批任务开始前，机器需要启动时间 $s$，而完成这批任务所需的时间是各个任务需要时间的总和。
 
