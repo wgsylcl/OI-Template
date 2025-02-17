@@ -1,6 +1,16 @@
 # 欢迎
 
-这是[liuchuliang666](https://www.luogu.com/user/568434)编写的算法模板wiki，用于OI学习。
+这是[liuchuliang666](https://www.luogu.com.cn/user/568434)编写的算法模板wiki，用于OI学习。
+
+![](https://api.jerryz.com.cn/practice?id=568434)
+
+![](https://api.jerryz.com.cn/about?id=568434)
+
+![](https://api.jerryz.com.cn/shield?id=568434)
+
+![](https://cdn.luogu.com.cn/upload/image_hosting/wun5080s.png)
+
+![](https://cdn.luogu.com.cn/upload/image_hosting/8hr5bxir.png)
 
 ### 致谢
 
