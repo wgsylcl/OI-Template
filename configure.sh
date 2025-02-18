@@ -4,4 +4,4 @@ cargo install mdbook
 cargo install mdbook-katex
 cargo install mdbook-admonish
 mdbook-admonish install
-python runbook.py build
+mdbook build

@@ -17,14 +17,14 @@ def process_markdown_files():
                 file_path = os.path.join(root, file)
                 # 获取文件名（不包括扩展名）
                 title = os.path.splitext(file)[0]
-                
+
                 if title == "SUMMARY":
                     continue
 
                 # 读取文件内容
                 with open(file_path, "r", encoding="utf-8") as f:
                     content = f.read()
-                
+
                 # 检查文件内容是否已经有标题
                 if not content.lstrip().startswith("# "):
                     # 在文件内容开头插入标题
@@ -33,7 +33,7 @@ def process_markdown_files():
                 else:
                     print(f"Title already exists, skipped: {file_path}")
                     new_content = content  # 保留原内容
-                
+
                 # 将内容写回文件
                 with open(file_path, "w", encoding="utf-8") as f:
                     f.write(new_content)
@@ -57,18 +57,18 @@ def main():
     """
     # 设置内容根目录（通常是当前目录）
     base_dir = os.getcwd()
-    
+
     process_markdown_files()
 
     # 生成 SUMMARY.md 内容
-    generated_content = generate_content(os.path.join(base_dir,'src'))
-    summary_content = f"# Summary\n\n{generated_content}" if generated_content else "# Summary"
-    
-    # 写入 SUMMARY.md 文件
-    summary_path = os.path.join(base_dir, 'src', 'SUMMARY.md')
-    with open(summary_path, 'w', encoding='utf-8', newline='\n') as f:
-        f.write(summary_content)
-    
+    # generated_content = generate_content(os.path.join(base_dir,'src'))
+    # summary_content = f"# Summary\n\n{generated_content}" if generated_content else "# Summary"
+
+    # # 写入 SUMMARY.md 文件
+    # summary_path = os.path.join(base_dir, 'src', 'SUMMARY.md')
+    # with open(summary_path, 'w', encoding='utf-8', newline='\n') as f:
+    #     f.write(summary_content)
+
     # print(f"SUMMARY.md generated at: {summary_path}")
 
 if __name__ == '__main__':
