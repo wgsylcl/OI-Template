@@ -1,7 +1,7 @@
 # 斜率优化DP
-```admonish question title = "[「HNOI2008」玩具装箱](https://www.luogu.com.cn/problem/P3195)"
+```admonish question title = "[「HNOI2008」玩具装箱](https:\\www.luogu.com.cn/problem/P3195)"
 有 $n$ 个玩具，第 $i$ 个玩具价值为 $c_i$。要求将这 $n$ 个玩具排成一排，分成若干段。对于一段 $[l,r]$，它的代价为 $(r-l+\sum_{i=l}^r c_i-L)^2$。其中 $L$ 是一个常量，求分段的最小代价。
-    
+
 $1\le n\le 5\times 10^4, 1\le L, c_i\le 10^7$。
 ```
 
@@ -22,7 +22,7 @@ $1\le n\le 5\times 10^4, 1\le L, c_i\le 10^7$。
 将与 $j$ 无关的移到外面，我们得到
 
 $$
-f_i - (s_i-L')^2=\min_{j<i}\{f_j+s_j^2 + 2s_j(L'-s_i) \} 
+f_i - (s_i-L')^2=\min_{j<i}\{f_j+s_j^2 + 2s_j(L'-s_i) \}
 $$
 
 考虑一次函数的斜截式 $y=kx+b$，将其移项得到 $b=y-kx$。我们将与 $j$ 有关的信息表示为 $y$ 的形式，把同时与 $i,j$ 有关的信息表示为 $kx$，把要最小化的信息（与 $i$ 有关的信息）表示为 $b$，也就是截距。具体地，设
@@ -62,7 +62,7 @@ $$
 
 ### 点积最大化
 
-```admonish question title="[P3648 [APIO2014] 序列分割](https://www.luogu.com.cn/problem/P3648)"
+```admonish question title="[P3648 [APIO2014] 序列分割](https:\\www.luogu.com.cn/problem/P3648)"
 
 你正在玩一个关于长度为 $n$ 的非负整数序列的游戏。这个游戏中你需要把序列分成 $k + 1$ 个非空的块。为了得到 $k + 1$ 块，你需要重复下面的操作 $k$ 次：
 
@@ -144,7 +144,7 @@ int main()
 
 ### 二分优化
 
-```admonish question title="[P5785 [SDOI2012] 任务安排](https://www.luogu.com.cn/problem/P5785)"
+```admonish question title="[P5785 [SDOI2012] 任务安排](https:\\www.luogu.com.cn/problem/P5785)"
 
 机器上有 $n$ 个需要处理的任务，它们构成了一个序列。这些任务被标号为 $1$ 到 $n$，因此序列的排列为 $1 , 2 , 3 \cdots n$。这 $n$ 个任务被分成若干批，每批包含相邻的若干任务。从时刻 $0$ 开始，这些任务被分批加工，第 $i$ 个任务单独完成所需的时间是 $T_i$。在每批任务开始前，机器需要启动时间 $s$，而完成这批任务所需的时间是各个任务需要时间的总和。
 
@@ -199,7 +199,7 @@ int main()
 }
 ```
 ### CDQ分治优化
-```admonish question title = "[P4027 [NOI2007] 货币兑换](https://www.luogu.com.cn/problem/P4027)"
+```admonish question title = "[P4027 [NOI2007] 货币兑换](https:\\www.luogu.com.cn/problem/P4027)"
 
 小 Y 最近在一家金券交易所工作。该金券交易所只发行交易两种金券：A 纪念券（以下简称 A 券）和 B 纪念券（以下简称 B 券）。每个持有金券的顾客都有一个自己的帐户。金券的数目可以是一个实数。
 
@@ -336,6 +336,107 @@ int main()
     sort(p + 1, p + 1 + n);
     cdq(1, n);
     cout << fixed << setprecision(3) << f[n];
+    return 0;
+}
+```
+
+### 图上的斜率优化
+一些dp是建立在图上的，下面是一个例子，使用斜率优化
+```admonish question title = "[P5468 [NOI2019] 回家路线](https://www.luogu.com.cn/problem/P5468)"
+本题原题数据强度较低，若想要测试较强数据可以去 [P6302](https://www.luogu.com.cn/problem/P6302)，除数据范围外均与原题相同。
+
+$n$个节点，有$m$趟列车，车$i$从$p_i$时刻至$q_i$时刻从$x_i$地到$y_i$地。猫猫需要只坐列车从$1$节点到达$n$节点。
+
+设猫猫在一个地方等待的时间为$t$，那么代价为$At^2 + Bt + C$，其中$A$、$B$、$C$为给定非负常数，总代价为所有代价总和与到达时间的和。求最小代价。
+
+对于所有测试点：$2\le n\le 10^5,1\le m\le 2\times 10^5,0 \le A \le 10 , 0 \le B, C \le 10^6,1 \le x_i, y_i \le n , x_i \neq y_i , 0 \le p_i < q_i \le 10^3$。题目保证至少存在一条可行的回家路线。
+```
+
+我们考虑以边为状态dp
+
+设$f_i$为走$i$趟列车前的最小代价，有转移方程：
+
+$$f_i = \min_{y_j = x_i \land q_j \leq q_i}(f_j + A(p_i - q_j)^2 + B(p_i - q_j) + C)$$
+
+最终代价即为：$\min f_i + q_i$
+
+对于第一个方程，不考虑其他限制，即为找到最优的$j$更新$i$，有：
+$$\begin{aligned}
+    f_i &= f_j + A(p_i - q_j)^2 + B(p_i - q_j) + C \\
+    f_i &= f_j + Ap_i^2 + Aq_j^2 - 2Ap_iq_j + Bp_i - Bq_j + C \\
+    f_j + Aq_j^2 - Bq_j &= 2Ap_iq_j + f_i - Ap_i^2 - Bp_i - C
+\end{aligned}$$
+
+对于已经更新过的$j$，$f_j + Aq_j^2 - Bq_j$是已知的。后半部分$f_i - Ap_i^2 - Bp_i - C$只有$f_i$是未知的，也是我们要最优化的。
+那么我们可以将上式看做$y = kx + b$的形式，其中
+$$\begin{aligned}
+    y &= f_j + Aq_j^2 - Bq_j \\
+    x &= q_j \\
+    k &= 2Ap_i \\
+    b &= f_i - Ap_i^2 - Bp_i - C \\
+\end{aligned}$$
+（常数其实可以属于任意一个位置，上述只是举例）
+
+那么我们可以将所有可以转移到的$j$看做一个二维平面上的点，每次更新$f_i$实际是对一个斜率找出经过其中一个点得到的最优的$b$。
+
+那么显然只会选到前者构成的凸包上的点。
+
+注意到查询的斜率都是单调的，而且之后在凸包后方插入新的点，于是维护凸包的数组就变成了单调队列。否则的话，就是动态维护凸包并在凸包上二分。
+
+对于这道题，最优指最小，那么我们维护的是下凸包。
+
+斜率优化的部分已经完了。考虑加入$y_j = x_i \land q_j \leq p_i$的限制怎么做。
+
+对于第一个限制，发现不同点互不影响，那么我们对每个点开一个单调队列，对于一个列车在它的$x$位置查询就好了。
+
+对于第二个限制，我们将所有列车按照$p$排序然后枚举时间，那么对于上面更新完的列车先不插入队列，当枚举时间到$p$的时候再将其插入即可。
+
+这样就能满足所有限制，并且保证查询的斜率单调递增。
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define endl '\n'
+typedef long long ll;
+const int MAXN = 1e6 + 10;
+int n, T, m, A, B, C, st[MAXN], ed[MAXN], p[MAXN], q[MAXN], hd[MAXN], tl[MAXN];
+ll f[MAXN], x[MAXN], y[MAXN], ans = numeric_limits<ll>::max();
+vector<int> V[MAXN], G[MAXN], que[MAXN];
+int main()
+{
+    cin >> n >> m >> A >> B >> C;
+    for (int i = 1; i <= m; i++)
+        cin >> st[i] >> ed[i] >> p[i] >> q[i], T = max(T, q[i]), G[p[i]].push_back(i);
+    for (int i = 1; i <= n; i++)
+        hd[i] = 0, tl[i] = -1;
+    for (int t = 0; t <= T; t++)
+    {
+        for (int i : V[t])
+        {
+            int e = ed[i];
+            while (hd[e] < tl[e] && 1ll * (y[que[e][tl[e]]] - y[que[e][tl[e] - 1]]) * (x[i] - x[que[e][tl[e]]]) >= 1ll * (y[i] - y[que[e][tl[e]]]) * (x[que[e][tl[e]]] - x[que[e][tl[e] - 1]]))
+                --tl[e];
+            if (++tl[e] == que[e].size())
+                que[e].push_back(i);
+            else
+                que[e][tl[e]] = i;
+        }
+        for (int i : G[t])
+        {
+            int e = st[i];
+            while (hd[e] < tl[e] && (y[que[e][hd[e] + 1]] - y[que[e][hd[e]]]) < 2ll * A * p[i] * (x[que[e][hd[e] + 1]] - x[que[e][hd[e]]]))
+                ++hd[e];
+            if (hd[e] > tl[e] && st[i] != 1)
+                continue;
+            int j = st[i] == 1 && hd[e] > tl[e] ? 0 : que[e][hd[e]];
+            f[i] = f[j] + 1ll * A * (p[i] - q[j]) * (p[i] - q[j]) + 1ll * B * (p[i] - q[j]) + C;
+            x[i] = q[i], y[i] = f[i] + 1ll * A * q[i] * q[i] - 1ll * B * q[i];
+            V[q[i]].push_back(i);
+            if (ed[i] == n)
+                ans = min(ans, f[i] + q[i]);
+        }
+    }
+    cout << ans;
     return 0;
 }
 ```
