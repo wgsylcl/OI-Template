@@ -198,3 +198,144 @@ int main()
     return 0;
 }
 ```
+### CDQ分治优化
+```admonish question title = "[P4027 [NOI2007] 货币兑换](https://www.luogu.com.cn/problem/P4027)"
+
+小 Y 最近在一家金券交易所工作。该金券交易所只发行交易两种金券：A 纪念券（以下简称 A 券）和 B 纪念券（以下简称 B 券）。每个持有金券的顾客都有一个自己的帐户。金券的数目可以是一个实数。
+
+每天随着市场的起伏波动，两种金券都有自己当时的价值，即每一单位金券当天可以兑换的人民币数目。我们记录第 $K$ 天中 A 券和 B 券的价值分别为 $A_K$ 和 $B_K$（元/单位金券）。
+
+为了方便顾客，金券交易所提供了一种非常方便的交易方式：比例交易法。
+
+比例交易法分为两个方面：
+
+a)  卖出金券：顾客提供一个 $[0, 100]$ 内的实数 $OP$ 作为卖出比例，其意义为：将 $OP\%$ 的 A 券和 $OP\%$ 的 B 券以当时的价值兑换为人民币；
+
+b)  买入金券：顾客支付 $IP$ 元人民币，交易所将会兑换给用户总价值为 $IP$ 的金券，并且，满足提供给顾客的 A 券和 B 券的比例在第 $K$ 天恰好为 $\mathrm{Rate}_ K$；
+
+例如，假定接下来 $3$ 天内的 $A_K,B_K,\mathrm{Rate}_ K$ 的变化分别为：
+
+| 时间 | $A_K$ | $B_K$ | $\mathrm{Rate}_ K$ |
+| ----- | ----- | ----- | ----- |
+| 第一天 | $1$ | $1$ | $1$ |
+| 第二天 | $1$ | $2$ | $2$ |
+| 第三天 | $2$ | $2$ | $3$ |
+
+假定在第一天时，用户手中有 $100$ 元人民币但是没有任何金券。
+
+用户可以执行以下的操作：
+
+| 时间 | 用户操作 | 人民币(元) | A 券的数量 | B 券的数量 |
+| ----- | ----- | ----- | ----- | ----- |
+| 开户 | 无 | $100$ | $0$ | $0$ |
+| 第一天 | 买入 $100$ 元 | $0$ | $50$ | $50$ |
+| 第二天 | 卖出 $50\%$ | $75$ | $25$ | $25$ |
+| 第二天 | 买入 $60$ 元 | $15$ | $55$ | $40$ |
+| 第三天 | 卖出 $100\%$ | $205$ | $0$ | $0$ |
+
+注意到，同一天内可以进行多次操作。
+
+小 Y 是一个很有经济头脑的员工，通过较长时间的运作和行情测算，他已经知道了未来 $N$ 天内的 A 券和 B 券的价值以及 $\mathrm{Rate}$。他还希望能够计算出来，如果开始时拥有 $S$ 元钱，那么 $N$ 天后最多能够获得多少元钱。
+
+对于 $100\%$ 的测试数据，满足：
+
+$N \le 10^5$，$0 < A_K \leq 10$，$0 < B_K\le 10$，$0 < \mathrm{Rate}_K \le 100$，$\mathrm{MaxProfit}  \leq 10^9$。
+
+```
+
+我们假设每时每刻手上只有钱，即$f_i$表示前$i$天手上最多能有多少钱，那么只有两种可能：
+
+- 第$i-1$天手上只有钱，这时$f_i = f_{i-1}$
+- 在第$j (j < i)$天买入，第$i$天卖出，这时$f_i = \max_{j<i}\{f_j \times \frac{A_iRate_j+B_i}{A_jRate_j+B_j}\}$
+
+因此$$f_i = \max\{f_{i-1},\max_{j < i}\{f_j \times \frac{A_iRate_j+B_i}{A_jRate_j+B_j}\}$$
+
+注意到右边那项，依旧可以写成$\left(\frac{A_jRate_j}{A_jRate_j+B_j},\frac{A_j}{A_jRate_j+B_j}\right)$与$(A_i,B_i)$的点积，那么转化成点积最大化问题
+
+但是每次插入点的横坐标、以及查询直线斜率也不在单调
+
+可以树套树，但是太麻烦
+
+考虑[CDQ](../DivideAndDouble/CDQ分治.md)，分别排序左右两边的横坐标，通过双指针在凸包上插入、查询即可
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define endl '\n'
+#define mid ((l + r) >> 1)
+typedef long long ll;
+typedef double db;
+const int MAXN = 1e5 + 10;
+const db eps = 1e-8;
+db f[MAXN];
+int n, q[MAXN];
+struct node
+{
+    db a, b, r, x, y, k;
+    int w, id;
+    inline bool operator<(const node &b) { return k > b.k; }
+} p[MAXN], t[MAXN];
+db slope(int j, int k)
+{
+    if (fabs(p[j].x - p[k].x) < eps)
+        return 1e15;
+    return (p[j].y - p[k].y) / (p[j].x - p[k].x);
+}
+void cdq(int l, int r)
+{
+    if (l == r)
+    {
+        f[l] = max(f[l], f[l - 1]);
+        p[l].y = f[l] / (p[l].a * p[l].r + p[l].b);
+        p[l].x = p[l].y * p[l].r;
+        return;
+    }
+    int cur1 = l, cur2 = mid + 1, cur;
+    for (int i = l; i <= r; i++)
+        if (p[i].id > mid)
+            t[cur2++] = p[i];
+        else
+            t[cur1++] = p[i];
+    for (int i = l; i <= r; i++)
+        p[i] = t[i];
+    cdq(l, mid);
+    cur1 = 1, cur2 = 0;
+    for (int i = l; i <= mid; i++)
+    {
+        while (cur1 < cur2 && slope(q[cur2 - 1], q[cur2]) < slope(q[cur2], i) + eps)
+            cur2--;
+        q[++cur2] = i;
+    }
+    for (int i = mid + 1; i <= r; i++)
+    {
+        while (cur1 < cur2 && slope(q[cur1], q[cur1 + 1]) + eps > p[i].k)
+            cur1++;
+        int t = q[cur1];
+        f[p[i].id] = max(f[p[i].id], p[i].a * p[t].x + p[i].b * p[t].y);
+    }
+    cdq(mid + 1, r);
+    cur = cur1 = l, cur2 = mid + 1;
+    while (cur1 <= mid && cur2 <= r)
+        if (p[cur1].x < p[cur2].x + eps)
+            t[cur++] = p[cur1++];
+        else
+            t[cur++] = p[cur2++];
+    while (cur1 <= mid)
+        t[cur++] = p[cur1++];
+    while (cur2 <= r)
+        t[cur++] = p[cur2++];
+    for (int i = l; i <= r; i++)
+        p[i] = t[i];
+}
+int main()
+{
+    ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+    cin >> n >> f[0];
+    for (int i = 1; i <= n; i++)
+        cin >> p[i].a >> p[i].b >> p[i].r, p[i].k = -p[i].a / p[i].b, p[i].id = i;
+    sort(p + 1, p + 1 + n);
+    cdq(1, n);
+    cout << fixed << setprecision(3) << f[n];
+    return 0;
+}
+```
