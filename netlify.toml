@@ -8,7 +8,7 @@
   command = "chmod +x configure.sh && ./configure.sh"
   publish = "book"
 
-[[context.cache]]
+[context.cache]
   key = "v1-cargo-deps"
   paths = [
     "$HOME/.cargo/registry",
