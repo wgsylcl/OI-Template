@@ -1,16 +1,18 @@
+# netlify.toml
+
 [build]
   command = "chmod +x configure.sh && ./configure.sh"
   publish = "book"
 
-  # 配置缓存
-  [[context]]
-    environment = "production"
+[context.production]
+  command = "chmod +x configure.sh && ./configure.sh"
+  publish = "book"
 
-  [[context.cache]]
-    key = "v1-cargo-deps"
-    paths = [
-      "$HOME/.cargo/registry",
-      "$HOME/.cargo/git",
-      "$HOME/.rustup",
-      "target/",
-    ]
+[[context.cache]]
+  key = "v1-cargo-deps"
+  paths = [
+    "$HOME/.cargo/registry",
+    "$HOME/.cargo/git",
+    "$HOME/.rustup",
+    "target/",
+  ]
