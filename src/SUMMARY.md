@@ -41,6 +41,8 @@
 - [杂项](./Other/杂项.md)
   - [pb_ds库](./Other/pb_ds库.md)
   - [扫描线](./Other/扫描线.md)
-  - [如何在机房摸鱼而不被教练发现](./Other/如何在机房摸鱼而不被教练发现.md)
-  - [霸道泽睿爱上雨之](./Other/霸道泽睿爱上雨之.md)
+  - [小文章](./Other/articles/小文章.md)
+    - [如何在机房摸鱼而不被教练发现](./Other/articles/如何在机房摸鱼而不被教练发现.md)
+    - [霸道泽睿爱上雨之](./Other/articles/霸道泽睿爱上雨之.md)
+    - [吴金全的自我介绍](./Other/articles/吴金全的自我介绍.md)
   <!-- - [test](./test.md) -->

@@ -1,0 +1,16 @@
+[build]
+  command = "chmod +x configure.sh && ./configure.sh"
+  publish = "book"
+
+  # 配置缓存
+  [[context]]
+    environment = "production"
+
+  [[context.cache]]
+    key = "v1-cargo-deps"
+    paths = [
+      "$HOME/.cargo/registry",
+      "$HOME/.cargo/git",
+      "$HOME/.rustup",
+      "target/",
+    ]

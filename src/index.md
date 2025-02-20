@@ -2,7 +2,9 @@
 
 这是[liuchuliang666](https://www.luogu.com.cn/user/568434)编写的算法模板wiki，用于OI学习。
 
-[如何在机房摸鱼而不被教练发现](./Other/如何在机房摸鱼而不被教练发现.md)
+[如何在机房摸鱼而不被教练发现](./Other/articles/如何在机房摸鱼而不被教练发现.md)
+
+[吴金全的自我介绍](./Other/articles/吴金全的自我介绍.md)
 
 ![](https://api.jerryz.com.cn/practice?id=568434)
 
