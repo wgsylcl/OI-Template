@@ -60,6 +60,98 @@ $$
 
 接下来介绍更多的例子
 
+```admonish question title = "[P2900 [USACO08MAR] Land Acquisition G](https://www.luogu.com.cn/problem/P2900)"
+Farmer John 准备扩大他的农场，眼前他正在考虑购买 $N$ 块长方形的土地，每块土地长$w_i$宽$l_i$。
+
+如果 FJ 单买一块土地，价格就是土地的面积。但他可以选择并购一组土地，并购的价格为这些土地中最大的长乘以最大的宽。比如 FJ 并购一块 $3 \times 5$ 和一块 $5 \times 3$ 的土地，他只需要支付 $5 \times 5=25$ 元， 比单买合算。
+
+FJ 希望买下所有的土地。他发现，将这些土地分成不同的小组来并购可以节省经费。 给定每份土地的尺寸，请你帮助他计算购买所有土地所需的最小费用。
+
+数据范围：$1 \leq N \leq 5 \times 10^4$
+```
+
+首先明确一点：对于两片土地，如果小的那片被大的完全覆盖，那我们肯定不会单独买小的。
+
+那么我们以$w_i$为第一关键字，$l_i$为第二关键字排序，去掉那些被覆盖的土地，这时$w_i$单调递增，$l_i$单调递减，并且也很容易看出，买土地一定是一段一段连续买的。
+
+我们设$f_i$为买前$i$块土地所需的最小费用，那么推出转移方程。
+
+$$f_i = \min_{j = 1}^{i}\{f_{j - 1} + w_il_j\}$$
+
+对比$b = y - kx$，得到：
+$$
+\begin{aligned}
+x &= l_j \\
+y &= f_{j - 1} \\
+k &= -w_i \\
+b &= f_i
+\end{aligned}
+$$
+
+~~貌似更加直接了~~
+
+我们需要让$f_i$最小，维护上凸壳上的点即可，$f_n$就是答案
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int MAXN = 5e4 + 8;
+int n;
+bool vis[MAXN];
+int que[MAXN], head, tail;
+ll f[MAXN];
+struct node
+{
+    int w, l;
+    bool operator<(const node &x) const
+    {
+        if (w == x.w)
+            return l < x.l;
+        return w < x.w;
+    }
+} a[MAXN];
+double X(int i) { return -a[i].l; }
+double Y(int i) { return f[i - 1]; }
+double K(int i) { return a[i].w; }
+double slope(int i, int j) { return (Y(i) - Y(j)) / (X(i) - X(j)); }
+int main()
+{
+    ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+        cin >> a[i].w >> a[i].l;
+    sort(a + 1, a + 1 + n);
+    int mx = 0;
+    for (int i = n; i >= 1; i--)
+    {
+        if (a[i].l <= mx)
+            vis[i] = 1;
+        mx = max(mx, a[i].l);
+    }
+    int idx = 0;
+    for (int i = 1; i <= n; i++)
+        if (!vis[i])
+            a[++idx] = a[i];
+    n = idx;
+    head = 1;
+    tail = 0;
+    que[++tail] = 1;
+    for (int i = 1; i <= n; i++)
+    {
+        while (head < tail && slope(que[head], que[head + 1]) < K(i))
+            ++head;
+        int j = que[head];
+        f[i] = f[j - 1] + 1ll * a[j].l * a[i].w;
+        while (head < tail && slope(que[tail], que[tail - 1]) > slope(que[tail], i + 1))
+            --tail;
+        que[++tail] = i + 1;
+    }
+    cout << f[n];
+    return 0;
+}
+```
+
 ### 点积最大化
 
 ```admonish question title="[P3648 [APIO2014] 序列分割](https://www.luogu.com.cn/problem/P3648)"
