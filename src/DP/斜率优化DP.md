@@ -342,11 +342,11 @@ $N \le 10^5$，$0 < A_K \leq 10$，$0 < B_K\le 10$，$0 < \mathrm{Rate}_K \le 10
 
 因此$$f_i = \max\{f_{i-1},\max_{j < i}\{f_j \times \frac{A_iRate_j+B_i}{A_jRate_j+B_j}\}$$
 
-注意到右边那项，依旧可以写成$\left(\frac{A_jRate_j}{A_jRate_j+B_j},\frac{A_j}{A_jRate_j+B_j}\right)$与$(A_i,B_i)$的点积，那么转化成点积最大化问题
+注意到右边那项，依旧可以写成$\left(\frac{f_jRate_j}{A_jRate_j+B_j},\frac{f_j}{A_jRate_j+B_j}\right)$与$(A_i,B_i)$的点积，那么转化成点积最大化问题
 
-但是每次插入点的横坐标、以及查询直线斜率也不在单调
+但是每次插入点的横坐标、以及查询直线斜率也不再单调
 
-可以树套树，但是太麻烦
+可以树套树，但是太麻烦，一点也不优雅
 
 考虑[CDQ](../DivideAndDouble/CDQ分治.md)，分别排序左右两边的横坐标，通过双指针在凸包上插入、查询即可
 
