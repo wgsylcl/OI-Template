@@ -1,5 +1,5 @@
 # 斜率优化DP
-```admonish question title = "[「HNOI2008」玩具装箱](https:\\www.luogu.com.cn/problem/P3195)"
+```admonish question title = "[「HNOI2008」玩具装箱](https://www.luogu.com.cn/problem/P3195)"
 有 $n$ 个玩具，第 $i$ 个玩具价值为 $c_i$。要求将这 $n$ 个玩具排成一排，分成若干段。对于一段 $[l,r]$，它的代价为 $(r-l+\sum_{i=l}^r c_i-L)^2$。其中 $L$ 是一个常量，求分段的最小代价。
 
 $1\le n\le 5\times 10^4, 1\le L, c_i\le 10^7$。
@@ -62,7 +62,7 @@ $$
 
 ### 点积最大化
 
-```admonish question title="[P3648 [APIO2014] 序列分割](https:\\www.luogu.com.cn/problem/P3648)"
+```admonish question title="[P3648 [APIO2014] 序列分割](https://www.luogu.com.cn/problem/P3648)"
 
 你正在玩一个关于长度为 $n$ 的非负整数序列的游戏。这个游戏中你需要把序列分成 $k + 1$ 个非空的块。为了得到 $k + 1$ 块，你需要重复下面的操作 $k$ 次：
 
@@ -144,7 +144,7 @@ int main()
 
 ### 二分优化
 
-```admonish question title="[P5785 [SDOI2012] 任务安排](https:\\www.luogu.com.cn/problem/P5785)"
+```admonish question title="[P5785 [SDOI2012] 任务安排](https://www.luogu.com.cn/problem/P5785)"
 
 机器上有 $n$ 个需要处理的任务，它们构成了一个序列。这些任务被标号为 $1$ 到 $n$，因此序列的排列为 $1 , 2 , 3 \cdots n$。这 $n$ 个任务被分成若干批，每批包含相邻的若干任务。从时刻 $0$ 开始，这些任务被分批加工，第 $i$ 个任务单独完成所需的时间是 $T_i$。在每批任务开始前，机器需要启动时间 $s$，而完成这批任务所需的时间是各个任务需要时间的总和。
 
@@ -199,7 +199,7 @@ int main()
 }
 ```
 ### CDQ分治优化
-```admonish question title = "[P4027 [NOI2007] 货币兑换](https:\\www.luogu.com.cn/problem/P4027)"
+```admonish question title = "[P4027 [NOI2007] 货币兑换](https://www.luogu.com.cn/problem/P4027)"
 
 小 Y 最近在一家金券交易所工作。该金券交易所只发行交易两种金券：A 纪念券（以下简称 A 券）和 B 纪念券（以下简称 B 券）。每个持有金券的顾客都有一个自己的帐户。金券的数目可以是一个实数。
 
