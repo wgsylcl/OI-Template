@@ -353,9 +353,7 @@ namespace AC
                     q.push(tr[u].son[i]);                          // 并加入队列
                 }
                 else
-                    tr[u].son[i] =
-                        tr[tr[u].fail]
-                            .son[i]; // 将不存在的字典树的状态链接到了失配指针的对应状态
+                    tr[u].son[i] = tr[tr[u].fail].son[i]; // 将不存在的字典树的状态链接到了失配指针的对应状态
             }
         }
     }
