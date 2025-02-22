@@ -548,14 +548,14 @@ int query(const char t[])
 [Luogu P3796 AC 自动机（简单版 II）](https://www.luogu.com.cn/problem/P3796)
 
 ```cpp
-{{#include ./code/ac-automaton/ac-automaton_1.cpp}}
+{{#include ./code/ac-automaton/ac-automaton_2.cpp}}
 ```
 
 #### 模版 3
 [Luogu P5357【模板】AC 自动机](https://www.luogu.com.cn/problem/P5357)
 
 ```cpp
-{{#include ./code/ac-automaton/ac-automaton_1.cpp}}
+{{#include ./code/ac-automaton/ac-automaton_3.cpp}}
 ```
 
 ## 拓展
