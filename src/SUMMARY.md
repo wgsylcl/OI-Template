@@ -12,6 +12,7 @@
   - [平衡树](./TreeData/平衡树.md)
   - [线段树分裂](./TreeData/线段树分裂.md)
   - [线段树合并](./TreeData/线段树合并.md)
+  - [线段树分治](./TreeData/线段树分治.md)
 - [图论](./Graph/图论.md)
   - [2-SAT](./Graph/2-SAT.md)
   - [树哈希](./Graph/树哈希.md)
@@ -46,4 +47,6 @@
     - [如何在机房摸鱼而不被教练发现](./Other/articles/如何在机房摸鱼而不被教练发现.md)
     - [霸道泽睿爱上雨之](./Other/articles/霸道泽睿爱上雨之.md)
     - [吴金全的自我介绍](./Other/articles/吴金全的自我介绍.md)
+  - [小娱乐](./Other/entertainment/小娱乐.md)
+    - [好的故事](./Other/entertainment/好的故事.md)
   <!-- - [test](./test.md) -->
