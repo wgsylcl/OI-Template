@@ -29,6 +29,7 @@
 - [数学](./Math/数学.md)
   - [组合数学](./Math/Combine/组合数学.md)
     - [卢卡斯定理](./Math/Combine/卢卡斯定理.md)
+    - [卡特兰数](./Math/Combine/卡特兰数.md)
   - [数论](./Math/Number/数论.md)
     - [模意义下的乘法逆元](./Math/Number/模意义下的乘法逆元.md)
     - [欧拉函数及有关定理](./Math/Number/欧拉函数及有关定理.md)
