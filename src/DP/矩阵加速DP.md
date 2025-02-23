@@ -55,7 +55,7 @@ $$\begin{aligned}
     1 & 1
 \end{bmatrix}$
 
-问题来了，初始向量$\boldsymbol{P_1}$是什么，答案又如何统计？
+问题来了，初始向量$\boldsymbol{p_1}$是什么，答案又如何统计？
 
 考虑所有可能的首尾组合：
 1. 金 - 金
@@ -64,7 +64,7 @@ $$\begin{aligned}
 
 容易发现，情况2和情况3是相同的（翻转一下就行）
 
-因此令$\boldsymbol{P_1} = \begin{bmatrix}
+因此令$\boldsymbol{p_1} = \begin{bmatrix}
     0 \\
     1
 \end{bmatrix}$，则答案为$2f_{n,0}+f_{n,1}$
