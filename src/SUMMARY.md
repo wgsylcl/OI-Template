@@ -23,6 +23,7 @@
   - [点分治](./Graph/点分治.md)
 - [动态规划](./DP/动态规划.md)
   - [斜率优化DP](./DP/斜率优化DP.md)
+  - [矩阵加速DP](./DP/矩阵加速DP.md)
 - [字符串](./String/字符串.md)
   - [KMP](./String/KMP.md)
   - [AC自动机](./String/AC自动机.md)

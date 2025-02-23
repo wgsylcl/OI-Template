@@ -36,3 +36,5 @@ after = ["links"]
 pre-render = false
 no-css = true
 [preprocessor.embedify]
+[preprocessor.admonish.directive.builtin.tip]
+collapsible = true
