@@ -16,6 +16,3 @@
     "$HOME/.rustup",
     "target/",
   ]
-
-[plugins.inputs]
-paths = ["target/", "Cargo.lock"]
