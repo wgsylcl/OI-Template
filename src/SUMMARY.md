@@ -36,6 +36,7 @@
     - [模意义下的乘法逆元](./Math/Number/模意义下的乘法逆元.md)
     - [欧拉函数及有关定理](./Math/Number/欧拉函数及有关定理.md)
     - [中国剩余定理](./Math/Number/中国剩余定理.md)
+    - [扩展中国剩余定理](./Math/Number/扩展中国剩余定理.md)
     - [线性筛](./Math/Number/线性筛.md)
   - [多项式](./Math/Poly/多项式.md)
     - [多项式乘法](./Math/Poly/多项式乘法.md)
