@@ -304,7 +304,7 @@ $$
 事实上我们可以类比矩阵乘法，你发现上述转移只是把矩阵乘法的乘积求和变成相加取最小值，于是我们定义这个运算为 $\odot$，即
 
 $$
-A \odot B = C~~\Longleftrightarrow~~C[i,j]=\min_{1\le p \le n}\left\{A[i,p] + B[p,j]\right\}
+A \odot B = C \ \ \Longleftrightarrow \ \ C[i,j]=\min_{1\le p \le n}\left\{A[i,p] + B[p,j]\right\}
 $$
 
 于是得到
