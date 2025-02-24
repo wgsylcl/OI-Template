@@ -16,3 +16,9 @@
     "$HOME/.rustup",
     "target/",
   ]
+
+[[plugins]]
+package = "netlify-plugin-rust-cache"
+
+[plugins.inputs]
+paths = ["target/", "Cargo.lock"]
