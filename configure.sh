@@ -23,6 +23,11 @@
 
 # # 安装 mdbook-admonish
 # echo "Installing mdbook-admonish..."
+chmod +x ./linux/mdbook
+chmod +x ./linux/mdbook-katex
+chmod +x ./linux/mdbook-admonish
+chmod +x ./linux/mdbook-embedify
+
 ./linux/mdbook-admonish install
 
 rm ./book.toml
