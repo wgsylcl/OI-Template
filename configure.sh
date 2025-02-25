@@ -11,6 +11,7 @@ if ! command -v rustup &> /dev/null; then
   source $HOME/.cargo/env
 else
   echo "Rust is already installed."
+  rustup default stable
 fi
 
 # 安装 mdbook 和相关插件
