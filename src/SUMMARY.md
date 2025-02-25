@@ -44,6 +44,7 @@
   - [线性代数](./Math/LinearAlgebra/线性代数.md)
     - [向量](./Math/LinearAlgebra/向量.md)
     - [矩阵](./Math/LinearAlgebra/矩阵.md)
+  - [概率与统计](./Math/PossiblityAndSummarize/概率与统计.md)
 - [根号类算法](./Sqrt/根号类算法.md)
   - [分块](./Sqrt/分块.md)
 - [杂项](./Other/杂项.md)

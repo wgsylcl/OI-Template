@@ -11,9 +11,10 @@
 [context.cache]
   key = "v1-cargo-deps"
   paths = [
-    "$HOME/.cargo/registry",
-    "$HOME/.cargo/git",
-    "$HOME/.rustup",
+    "/opt/buildhome/.cargo/registry",
+    "/opt/buildhome/.cargo/git",
+    "/opt/buildhome/.rustup",
+    "/opt/buildhome/.cargo/bin",  # 确保缓存 ~/.cargo/bin
     "target/",
   ]
 
