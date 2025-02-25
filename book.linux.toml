@@ -1,0 +1,42 @@
+[book]
+authors = ["liuchuliang666"]
+language = "zh"
+multilingual = false
+src = "src"
+title = "OI-Template"
+[output.html.playground]
+copyable = true          # include the copy button for copying code snippets
+[output.html.print]
+enable = true    # include support for printable output
+page-break = false # insert page-break after each chapter
+[output.html]
+git-repository-url = "https://gitee.com/wgsylcl/oi-template"
+git-repository-icon = "fa-github"
+edit-url-template = "https://gitee.com/wgsylcl/oi-template/edit/main/{path}"
+theme = "theme"
+default-theme = "Navy"
+additional-css = ["./mdbook-admonish.css"]
+additional-js = ["./js/highlightjs-line-numbers.js"]
+[output.html.search]
+enable = true
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
+copy-js = true
+[preprocessor.admonish]
+command = "./linux/mdbook-admonish"
+assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+[preprocessor.katex]
+command = "./linux/mdbook-katex"
+after = ["links"]
+pre-render = false
+no-css = true
+[preprocessor.embedify]
+command = "./linux/mdbook-embedify"
+[preprocessor.admonish.directive.builtin.tip]
+collapsible = true
