@@ -21,14 +21,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 echo "Installing mdbook and plugins..."
 cargo install mdbook mdbook-katex mdbook-admonish mdbook-embedify --jobs=4
 
-# 检查是否安装成功
-if command -v mdbook &> /dev/null; then
-  echo "mdbook installed successfully."
-else
-  echo "mdbook installation failed."
-  exit 1
-fi
-
 # 安装 mdbook-admonish
 echo "Installing mdbook-admonish..."
 mdbook-admonish install
