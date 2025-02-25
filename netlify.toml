@@ -1,5 +1,5 @@
 [build]
-  command = "chmod +x configure.sh && ./configure.sh"
+  command = "npm install && chmod +x configure.sh && ./configure.sh"
   publish = "book"
 
 [build.environment]
