@@ -123,7 +123,7 @@ void dijkstra(int sta) {
 pbds 的平衡树提供了丰富的操作，如插入、删除、查找、求排名、求第 k 小等。其声明形式如下：
 ~~~cpp
 tree<Key, Mapped, Cmp_Fn, Tag, Node_Update> tr;
-```
+~~~
 - `Key`：键的类型。
 - `Mapped`：值的类型，若为 `null_type`，表示该树类似 `set`；否则类似 `map`。
 - `Cmp_Fn`：比较函数，如 `less<Key>`（升序）、`greater<Key>`（降序）。
