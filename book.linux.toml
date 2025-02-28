@@ -15,7 +15,7 @@ git-repository-icon = "fa-github"
 edit-url-template = "https://gitee.com/wgsylcl/oi-template/edit/main/{path}"
 theme = "theme"
 default-theme = "Navy"
-additional-css = ["./mdbook-admonish.css"]
+additional-css = ["./mdbook-admonish.css", "./mdbook-admonish-custom.css"]
 additional-js = ["./js/highlightjs-line-numbers.js"]
 [output.html.search]
 enable = true
@@ -40,3 +40,10 @@ no-css = true
 command = "./linux/mdbook-embedify"
 [preprocessor.admonish.directive.builtin.tip]
 collapsible = true
+[[preprocessor.admonish.custom]]
+directive = "code"
+icon = "./theme/code-slash.svg"
+color = "#00FFFF"
+aliases = ["code"]
+collapsible = true
+title = "实现"

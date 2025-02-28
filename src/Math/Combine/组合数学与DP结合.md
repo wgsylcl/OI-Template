@@ -15,6 +15,8 @@
 对于 $100\%$ 的数据，$1\le n,m \le 10^6$。 
 ```
 
-```cpp
+```admonish code
+~~~cpp
 {{#include ./Luogu_P_3214.cpp}}
+~~~
 ```

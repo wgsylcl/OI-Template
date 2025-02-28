@@ -91,8 +91,8 @@ $$
 ~~貌似更加直接了~~
 
 我们需要让$f_i$最小，维护上凸壳上的点即可，$f_n$就是答案
-
-```cpp
+```admonish code
+~~~cpp
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -150,6 +150,7 @@ int main()
     cout << f[n];
     return 0;
 }
+~~~
 ```
 
 ### 点积最大化
@@ -179,8 +180,8 @@ $$f_i = \min_{j = 0}^{i - 1}\{g_j + s_j*(s_i - s_j)\} = \min_{j = 0}^{i - 1}\{s_
 ![](./slope2.png)
 
 因此维护上凸包即可
-
-```cpp
+```admonish code
+~~~cpp
 #include <bits/stdc++.h>
 using namespace std;
 #define endl '\n'
@@ -230,8 +231,8 @@ int main()
         cout << pre[i][now] << " ", now = pre[i][now];
     return 0;
 }
+~~~
 ```
-
 接下来我们介绍斜率优化的进阶应用，将斜率优化与二分/分治/数据结构等结合，来维护性质不那么好（缺少一些单调性性质）的 DP 方程。
 
 ### 二分优化
@@ -252,8 +253,8 @@ int main()
 我们发现，查询直线的斜率不再单调，但是加入的决策点横坐标依旧单调
 
 因此我们在凸包上二分找决策点即可
-
-```cpp
+```admonish code
+~~~cpp
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -289,7 +290,9 @@ int main()
     cout << f[n];
     return 0;
 }
+~~~
 ```
+
 ### CDQ分治优化
 ```admonish question title = "[P4027 [NOI2007] 货币兑换](https://www.luogu.com.cn/problem/P4027)"
 
@@ -349,8 +352,8 @@ $N \le 10^5$，$0 < A_K \leq 10$，$0 < B_K\le 10$，$0 < \mathrm{Rate}_K \le 10
 可以树套树，但是太麻烦，一点也不优雅
 
 考虑[CDQ](../DivideAndDouble/CDQ分治.md)，分别排序左右两边的横坐标，通过双指针在凸包上插入、查询即可
-
-```cpp
+```admonish code
+~~~cpp
 #include <bits/stdc++.h>
 using namespace std;
 #define endl '\n'
@@ -430,6 +433,7 @@ int main()
     cout << fixed << setprecision(3) << f[n];
     return 0;
 }
+~~~
 ```
 
 ### 图上的斜率优化
@@ -485,7 +489,8 @@ $$\begin{aligned}
 
 这样就能满足所有限制，并且保证查询的斜率单调递增。
 
-```cpp
+```admonish code
+~~~cpp
 #include <bits/stdc++.h>
 using namespace std;
 #define endl '\n'
@@ -531,4 +536,5 @@ int main()
     cout << ans;
     return 0;
 }
+~~~
 ```

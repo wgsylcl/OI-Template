@@ -83,7 +83,7 @@ fail 指针与 [KMP](./KMP.md) 中的 next 指针相比：
 2.  队列 `q`：用于 BFS 遍历字典树。
 3.  `tr[u].fail`：结点 $u$ 的 fail 指针。
 
-```cpp
+~~~cpp
 void build()
 {
     queue<int> q;
@@ -106,7 +106,7 @@ void build()
         }
     }
 }
-```
+~~~
 
 ### 解释
 
@@ -154,7 +154,7 @@ Trie 的结点的孩子数组 `son` 还有另一种比较简单的理解方式�
 
 ### 实现
 
-```cpp
+~~~cpp
 int query(const char t[])
 {
     int u = 0, res = 0;
@@ -168,7 +168,7 @@ int query(const char t[])
     }
     return res;
 }
-```
+~~~
 
 ### 解释
 
@@ -206,7 +206,7 @@ int query(const char t[])
 于是我们按照 fail 树，做一次内向树上的拓扑排序，就能一次性求出所有模式串的出现次数。
 
 `build` 函数在原先的基础上，增加了入度统计一部分，为拓扑排序做准备。
-```cpp
+~~~cpp
 void build()
 {
     queue<int> q;
@@ -230,11 +230,11 @@ void build()
         }
     }
 }
-```
+~~~
 
 然后我们在查询的时候就可以只为找到结点的 `ans` 打上标记，在最后再用拓扑排序求出答案。
 
-```cpp
+~~~cpp
 void query(const char t[])
 {
     int u = 0;
@@ -262,11 +262,11 @@ void topu()
             q.push(v);
     }
 }
-```
+~~~
 
 最后是主函数：
 
-```cpp
+~~~cpp
 int main()
 {
     // do_something();
@@ -278,9 +278,9 @@ int main()
         printf("%d\n", AC::ans[idx[i]]);
     // do_another_thing();
 }
-```
+~~~
 [Luogu P5357【模板】AC 自动机](https://www.luogu.com.cn/problem/P5357)
-```cpp
+~~~cpp
 #include <cstdio>
 #include <cstring>
 #include <queue>
@@ -410,7 +410,7 @@ int main()
     }
     return 0;
 }
-```
+~~~
 
 ### DFS 优化
 
@@ -438,7 +438,7 @@ int main()
 
 主要代码如下。若不熟悉代码中的类型定义，可以先看末尾的完整代码：
 
-```cpp
+~~~cpp
 int query(const char t[])
 {
     int u = 0, len = strlen(t + 1);
@@ -460,7 +460,7 @@ int query(const char t[])
         ans = std::max(ans, dp[i]);
     return ans;
 }
-```
+~~~
 
 但是这样的思路复杂度不是线性（因为要跳每个结点的 fail），会在第二个子任务中超时，所以我们需要进行优化。
 
@@ -472,7 +472,7 @@ int query(const char t[])
 
 那么我们在 `build` 的时候就可以这么写：
 
-```cpp
+~~~cpp
 void build()
 {
     queue<int> q;
@@ -504,11 +504,11 @@ void build()
         }
     }
 }
-```
+~~~
 
 然后查询时就可以去掉跳 fail 的循环，将代码简化如下：
 
-```cpp
+~~~cpp
 int query(const char t[])
 {
     int u = 0, mx = 0;
@@ -522,13 +522,15 @@ int query(const char t[])
     }
     return mx;
 }
-```
+~~~
 
 我们的 `tr[u].stat` 维护的是从结点 $u$ 开始，整条 fail 链上的长度集（因为长度集小于 $32$ 所以不影响），而 `st` 则维护的是查询字符串走到现在，前 $32$ 位（因为状态压缩自然溢出）的长度集。
 
 `&` 运算后结果不为 $0$，则代表两个长度集的交集非空，我们此时就找到了一个匹配。
-```cpp
+```admonish code
+~~~cpp
 {{#include ./code/ac-automaton/ac_automaton_luoguP2292.cpp}}
+~~~
 ```
 
 ```admonish question title = "[P4045 [JSOI2009] 密码](https://www.luogu.com.cn/problem/P4045)"
@@ -553,8 +555,10 @@ int query(const char t[])
 
 那么这时直接dfs即可，过程与DP一样
 
-```cpp
+```admonish code
+~~~cpp
 {{#include ./code/ac-automaton/Luogu_P_4045.cpp}}
+~~~
 ```
 
 ## 总结
@@ -564,22 +568,28 @@ int query(const char t[])
 #### 模板 1
 [Luogu P3808 AC 自动机（简单版）](https://www.luogu.com.cn/problem/P3808)
 
-```cpp
+```admonish code
+~~~cpp
 {{#include ./code/ac-automaton/ac-automaton_1.cpp}}
+~~~
 ```
 
 #### 模板 2
 [Luogu P3796 AC 自动机（简单版 II）](https://www.luogu.com.cn/problem/P3796)
 
-```cpp
+```admonish code
+~~~cpp
 {{#include ./code/ac-automaton/ac-automaton_2.cpp}}
+~~~
 ```
 
 #### 模版 3
 [Luogu P5357【模板】AC 自动机](https://www.luogu.com.cn/problem/P5357)
 
-```cpp
+```admonish code
+~~~cpp
 {{#include ./code/ac-automaton/ac-automaton_3.cpp}}
+~~~
 ```
 
 ## 拓展

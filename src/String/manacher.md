@@ -1,5 +1,5 @@
 # manacher
-```cpp
+~~~cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -35,4 +35,4 @@ int main()
     cout << ans - 1;
     return 0;
 }
-```
+~~~

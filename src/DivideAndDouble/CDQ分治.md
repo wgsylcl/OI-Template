@@ -1,6 +1,6 @@
 # CDQ分治
 ### 三维偏序
-```cpp
+~~~cpp
 #include <bits/stdc++.h>
 #define ll long long
 using namespace std;
@@ -88,10 +88,10 @@ int main()
         printf("%d\n", ans[i]);
     return 0;
 }
-```
+~~~
 
 ### 优化1D/1D类dp (P4093)
-```cpp
+~~~cpp
 #include <bits/stdc++.h>
 using namespace std;
 const int MAXN = 1e5 + 10, inf = 0x7fffffff, MAXV = 1e5 + 10;
@@ -180,4 +180,4 @@ int main()
     cout << ans;
     return 0;
 }
-```
+~~~

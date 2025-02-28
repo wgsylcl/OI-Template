@@ -1,5 +1,5 @@
 # KM
-```cpp
+~~~cpp
 #include <iostream>
 #include <cstdio>
 #include <vector>
@@ -80,4 +80,4 @@ int main()
     cout << ans;
     return 0;
 }
-```
+~~~

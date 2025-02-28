@@ -1,5 +1,5 @@
 # 2-SAT
-```cpp
+~~~cpp
 #include <iostream>
 #include <cstdio>
 #include <stack>
@@ -105,4 +105,4 @@ int main()
     }
     return 0;
 }
-```
+~~~
