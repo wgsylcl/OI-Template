@@ -16,7 +16,7 @@ edit-url-template = "https://gitee.com/wgsylcl/oi-template/edit/main/{path}"
 theme = "theme"
 default-theme = "Navy"
 additional-css = ["./mdbook-admonish.css", "./mdbook-admonish-custom.css"]
-additional-js = ["./js/highlightjs-line-numbers.js"]
+additional-js = ["./js/highlightjs-line-numbers.js", "./js/openlink.js"]
 [output.html.search]
 enable = true
 limit-results = 30
@@ -47,3 +47,6 @@ color = "#00FFFF"
 aliases = ["code"]
 collapsible = true
 title = "实现"
+[output.html.fold]
+enable = true
+level = 0
