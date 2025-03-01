@@ -47,3 +47,6 @@ color = "#00FFFF"
 aliases = ["code"]
 collapsible = true
 title = "实现"
+[output.html.fold]
+enable = true
+level = 0
