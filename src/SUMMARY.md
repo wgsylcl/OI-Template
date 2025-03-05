@@ -49,7 +49,7 @@
 - [根号类算法](./Sqrt/根号类算法.md)
   - [分块](./Sqrt/分块.md)
 - [做题记录](./Daily/做题记录.md)
-  - [P11364 [NOIP 2024] 树上查询](./Daily/P11364.md)
+  - [P11364 [NOIP2024] 树上查询](./Daily/P11364.md)
 - [杂项](./Other/杂项.md)
   - [pb_ds库](./Other/pb_ds库.md)
   - [扫描线](./Other/扫描线.md)
