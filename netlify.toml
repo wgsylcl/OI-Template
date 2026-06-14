@@ -13,3 +13,8 @@
   from = "/ui/*"
   to = "/.netlify/functions/comment/ui/:splat"
   status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/comment/api/:splat"
+  status = 200
